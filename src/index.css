@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ded{
+  font-size: 15px;
+  font-weight: 600;
+}
+
+a.active {
+  color: mediumpurple;
+  text-decoration: underline
+}
+
+.glass-card {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-lg rounded-xl p-5;
+}
+
+.glass-section {
+  @apply bg-black/40 backdrop-blur-sm text-white p-6 rounded-2xl border border-gray-600;
+}
+
+.glass-btn {
+  @apply bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-lg px-4 py-2 rounded-md transition duration-300;
+}
+
+/* .glass-banner {
+  @apply bg-white/10 backdrop-blur-lg border border-white/20 text-white rounded-2xl shadow-xl p-6;
+}
+
+.glass-table {
+  @apply bg-white/10 backdrop-blur-sm border border-white/20 shadow-md rounded-lg p-4;
+} */
+
+.glass-banner {
+  @apply bg-blue-500/10 backdrop-blur-lg border border-blue-100/20 text-white rounded-2xl shadow-xl p-6;
+}
+.glass-table {
+  @apply bg-green-100/10 backdrop-blur-sm border border-green-100/20 text-white shadow-md rounded-lg p-4;
+}
