@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const QueryCard = ({query}) => {
-    console.log(query)
+    // console.log(query)
     const {productName , ProductPhoto , productTitle, _id , recommendationCount, timestamp} = query
     return (
        <div className="card glass-card cursor-pointer  shadow-sm transform transition-transform duration-500 ease-in-out hover:scale-105">
