@@ -13,12 +13,12 @@ const MyQueries = () => {
   const { user } = use(AuthContext);
   const [myQueries, setMyQueries] = useState([]);
 
-  console.log(myQueries)
+  // console.log(myQueries)
   useEffect(() => {
     if (user?.email) {
       axiosInstance(`/my-queries/${user.email}`).then(
         (data) => {
-          console.log(data.data);
+          // console.log(data.data);
           const myAllQueries = data?.data
           setMyQueries(myAllQueries)
         }
