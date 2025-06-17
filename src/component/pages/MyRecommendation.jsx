@@ -12,7 +12,7 @@ const MyRecommendation = () => {
   useEffect(() => {
     if (user?.email) {
       axiosInstance(`/my-recommendation?email=${user?.email}`).then((res) => {
-        console.log(res?.data);
+        // console.log(res?.data);
         setRecommendations(res?.data);
       });
     }
@@ -32,7 +32,7 @@ const MyRecommendation = () => {
 
         axiosInstance.delete(`/myRecommendation/${id}`)
         .then(res =>{
-            console.log(res)
+            // console.log(res)
             setRecommendations( prev => prev.filter(rec => rec._id !== id))
 
         Swal.fire({
