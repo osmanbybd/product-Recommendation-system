@@ -14,7 +14,7 @@ const AllQueries = () => {
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
     axios(`${import.meta.env.VITE_URL}/queries?limit=0`).then((data) => {
-      console.log(data?.data);
+      // console.log(data?.data);
       setAllQueries(data?.data);
     });
   }, []);
