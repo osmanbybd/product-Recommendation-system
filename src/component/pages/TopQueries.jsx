@@ -7,7 +7,7 @@ const TopQueries = () => {
 
   useEffect(() => {
     axios(`${import.meta.env.VITE_URL}/queries`).then((res) => {
-      console.log(res?.data);
+      // console.log(res?.data);
       const brandCount = [];
       res?.data?.forEach((query) => {
         const brand = query.ProductBrand;
@@ -24,7 +24,7 @@ const TopQueries = () => {
     });
   }, []);
 
-  console.log(brandStates);
+  // console.log(brandStates);
 
   return (
     <div className="container mx-auto my-4 p-5">

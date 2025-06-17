@@ -5,7 +5,7 @@ import { FaArrowUp } from "react-icons/fa";
 import axiosInstance from '../hooks/useAsxioxSecure';
 import { AuthContext } from '../context/AuthContext';
 const RecommendationDetails = ({queryId, refresh}) => {
-    console.log(queryId)
+    // console.log(queryId)
     const [AllRecommendation , setAllRecommendation] = useState([])
     const [showAllRecommendation, setShowAllRecommendation] = useState(false)
         const {user} = use(AuthContext)
@@ -15,7 +15,7 @@ const RecommendationDetails = ({queryId, refresh}) => {
 
         axiosInstance(`/recommendation?queryId=${queryId}&email=${user?.email}`)
         .then(res =>{
-            console.log(res?.data)
+            // console.log(res?.data)
             setAllRecommendation(res?.data)
         })
 

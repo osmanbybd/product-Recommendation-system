@@ -1,7 +1,7 @@
 import React from "react";
 import logo from '../../../src/assets/user.png';
 const RecommendationCard = ({ recommendation }) => {
-  console.log(recommendation);
+  // console.log(recommendation);
 
     const {recommendationBrand, recommendationPhoto, recommendationReason, recommenderName, recommenderPhoto ,timestamp} = recommendation
 

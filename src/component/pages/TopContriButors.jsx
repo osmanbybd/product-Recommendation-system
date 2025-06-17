@@ -7,7 +7,7 @@ const TopContriButors = () => {
 
   useEffect(() => {
     axios(`${import.meta.env.VITE_URL}/queries`).then((res) => {
-      console.log(res?.data);
+      // console.log(res?.data);
       const countMap = [];
       res?.data?.forEach((query) => {
         const email = query.userEmail;
@@ -25,7 +25,7 @@ const TopContriButors = () => {
   }, []);
 
 
-  console.log(topContriButors)
+  // console.log(topContriButors)
   return (
     <div className="container mx-auto ">
 

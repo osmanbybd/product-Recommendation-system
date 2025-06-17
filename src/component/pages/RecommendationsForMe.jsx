@@ -12,7 +12,7 @@ const RecommendationsForMe = () => {
     axiosInstance(
       `/recommendationForMe?email=${user?.email}`
     ).then((res) => {
-      console.log(res);
+      // console.log(res);
       setRecommendationForMe(res?.data)
     });
   }, [user]);

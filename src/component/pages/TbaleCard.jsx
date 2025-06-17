@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TbaleCard = ({allQuery}) => {
-    console.log(allQuery)
+    // console.log(allQuery)
     return (
         <div>
              <tr>
