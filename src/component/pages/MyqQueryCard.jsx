@@ -27,7 +27,7 @@ const MyqQueryCard = ({ query }) => {
         axios
           .delete(`${import.meta.env.VITE_URL}/queryDelete/${id}`)
           .then((data) => {
-            console.log(data.data);
+            // console.log(data.data);
             if (data?.data?.deletedCount) {
               Swal.fire({
                 title: "Deleted!",
