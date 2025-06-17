@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const AllQueryCard = ({allQuery}) => {
-    console.log(allQuery)
+    // console.log(allQuery)
 
     const {productName, productTitle ,ProductPhoto,recommendationCount,_id} = allQuery
 
