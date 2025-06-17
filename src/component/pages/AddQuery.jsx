@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const AddQuery = () => {
   const { user } = use(AuthContext);
 
-  console.log(user?.photoURL);
+  // console.log(user?.photoURL);
 
   const handleAddQuery = (e) => {
     e.preventDefault();
@@ -25,10 +25,10 @@ const AddQuery = () => {
         title: "Oops...",
         text: "Please All the require field!",
       });
-      return
+      return;
     }
 
-    console.log(rowData);
+    // console.log(rowData);
 
     const NewRowData = {
       ...rowData,
@@ -40,7 +40,16 @@ const AddQuery = () => {
     axios
       .post(`${import.meta.env.VITE_URL}/add-query`, NewRowData)
       .then((res) => {
-        console.log(res);
+        if (res?.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Add your query success ",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+        // console.log(res);
       });
   };
 
