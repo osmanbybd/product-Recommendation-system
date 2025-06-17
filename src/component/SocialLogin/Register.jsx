@@ -23,13 +23,13 @@ const Register = () => {
     const photo = form.photo.value;
     const { email, password } = Object.fromEntries(formData.entries());
 
-    console.log(email, password);
+    // console.log(email, password);
 
     signUpNow(email, password)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo });
@@ -43,11 +43,11 @@ const Register = () => {
             });
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
           });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
