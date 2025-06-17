@@ -41,7 +41,7 @@ const Navbar = () => {
   const handleLogout = () => {
     userLogOut()
       .then(() => {
-        console.log("user log out");
+        // console.log("user log out");
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -51,7 +51,7 @@ const Navbar = () => {
         });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
