@@ -11,7 +11,7 @@ const QueryCollection = () => {
     useEffect(() => {
         axios(`${import.meta.env.VITE_URL}/queries?limit=6`)
         .then(data =>{
-            console.log(data.data)
+            // console.log(data.data)
             setQueries(data.data)
         })
     },[])
