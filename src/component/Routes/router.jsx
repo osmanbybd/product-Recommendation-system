@@ -13,6 +13,7 @@ import axios from "axios";
 import UpdatePage from "../pages/UpdatePage";
 import AllQueries from "../pages/AllQueries";
 import MyRecommendation from "../pages/MyRecommendation";
+import Loading from "../pages/Loading";
 
 
 
@@ -23,7 +24,8 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component:Home
+                Component:Home,
+                hydrateFallbackElement: Loading
             },
             {
                 path: 'recommendations',
@@ -35,7 +37,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'myRecommendation',
-                Component: MyRecommendation
+               element: <PrivateRoute><MyRecommendation></MyRecommendation> </PrivateRoute>
             },
             {
                 path:'login',
@@ -52,7 +54,7 @@ export const router = createBrowserRouter([
             {
                 path: 'queries/:id',
                 loader: ({params}) => axios(`${import.meta.env.VITE_URL}/queries/${params.id}`),
-                Component: QueryDetails
+                element : <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>
             },
             {
                 path: 'updatePage/:id',

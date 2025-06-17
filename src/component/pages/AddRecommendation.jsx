@@ -72,7 +72,7 @@ const AddRecommendation = ({ detailsQueries , handleRefresh }) => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="bg-gradient-to-r from-[#6bbd60] to-[#d1f7c4] rounded-lg shadow-lg p-5 ">
+      <div className="glass-section rounded-lg shadow-lg p-5 ">
         <h1 className="text-xl font-semibold">Add Your Complement Please</h1>
       </div>
 

@@ -60,7 +60,7 @@ const QueryDetails = () => {
 
   return (
     <div className="container mx-auto">
-      <div className=" max-w-7xl mx-auto py-3 my-5 bg-gradient-to-r from-[#6bbd60] to-[#d1f7c4] rounded-lg shadow-lg">
+      <div className=" max-w-7xl mx-auto py-3 my-5 glass-card">
         {/* <h1 className="text-center lg:text-6xl md:text-3xl text-xl font-semibold text-blue-950 py-4 ">
         Product Details
       </h1> */}

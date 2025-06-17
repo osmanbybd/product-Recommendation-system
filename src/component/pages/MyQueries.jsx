@@ -1,20 +1,22 @@
 import React, { use, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../context/AuthContext";
-import axios from "axios";
+// import axios from "axios";
 import { Typewriter } from "react-simple-typewriter";
 import { Fade } from "react-awesome-reveal";
 import QueryCard from "./QueryCard";
 import 'aos/dist/aos.css';
 import Aos from "aos";
 import MyqQueryCard from "./MyqQueryCard";
+import axiosInstance from "../hooks/useAsxioxSecure";
 const MyQueries = () => {
   const { user } = use(AuthContext);
   const [myQueries, setMyQueries] = useState([]);
 
+  console.log(myQueries)
   useEffect(() => {
     if (user?.email) {
-      axios(`${import.meta.env.VITE_URL}/my-queries/${user.email}`).then(
+      axiosInstance(`/my-queries/${user.email}`).then(
         (data) => {
           console.log(data.data);
           const myAllQueries = data?.data

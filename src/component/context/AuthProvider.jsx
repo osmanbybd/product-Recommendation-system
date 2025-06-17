@@ -1,37 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getIdToken, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/fiirebase.init';
-import { GoogleAuthProvider } from 'firebase/auth/web-extension';
+
 
 const AuthProvider = ({children}) => {
 
     const [user , setUser] = useState(null)
     const [loading , setLoading] = useState(true)
-     const provider = new GoogleAuthProvider()
+   
 
 
 const signUpNow = (email, password) =>{
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password)
 }
 
 
 const loginUser = (email, password) =>{
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password)
 }
 
 
 const updateUser = (updateDate) =>{
+    setLoading(true)
     return updateProfile(auth.currentUser, updateDate)
 }
 
 
 
 const userLogOut = () =>{
+    setLoading(true)
     return signOut(auth)
 }
 
-const googlLogin = () =>{
+const googlLogin = (provider) =>{
+    setLoading(true)
     return signInWithPopup(auth, provider)
 }
 
@@ -40,10 +45,18 @@ const googlLogin = () =>{
 
 useEffect(() =>{
 
-    const unSubscribe = onAuthStateChanged(auth, currentUser =>{
+    const unSubscribe = onAuthStateChanged(auth, async(currentUser) =>{
         setUser(currentUser)
         setLoading(false)
         console.log(currentUser)
+
+
+        if(currentUser){
+            const token = await getIdToken(currentUser)
+            localStorage.setItem('accessToken', token)
+        }else{
+            localStorage.removeItem('accessToken')
+        }
     })
 
 
@@ -66,9 +79,9 @@ useEffect(() =>{
         googlLogin
     }
     
-    return <AuthContext value={userInfo}>
+    return <AuthContext.Provider value={userInfo}>
         {children}
-    </AuthContext>
+    </AuthContext.Provider>
 };
 
 export default AuthProvider;

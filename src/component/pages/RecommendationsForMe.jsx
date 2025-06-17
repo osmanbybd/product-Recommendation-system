@@ -1,15 +1,16 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import axios from "axios";
+// import axios from "axios";
 import { MdRecommend } from "react-icons/md";
 import { Fade } from "react-awesome-reveal";
+import axiosInstance from "../hooks/useAsxioxSecure";
 const RecommendationsForMe = () => {
   const { user } = use(AuthContext);
   const [recommendForMe, setRecommendationForMe] = useState([]);
 
   useEffect(() => {
-    axios(
-      `${import.meta.env.VITE_URL}/recommendationForMe?email=${user?.email}`
+    axiosInstance(
+      `/recommendationForMe?email=${user?.email}`
     ).then((res) => {
       console.log(res);
       setRecommendationForMe(res?.data)

@@ -1,8 +1,9 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import axios from "axios";
+// import axios from "axios";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
+import axiosInstance from "../hooks/useAsxioxSecure";
 
 const MyRecommendation = () => {
   const { user } = use(AuthContext);
@@ -10,9 +11,7 @@ const MyRecommendation = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axios(
-        `${import.meta.env.VITE_URL}/my-recommendation?email=${user?.email}`
-      ).then((res) => {
+      axiosInstance(`/my-recommendation?email=${user?.email}`).then((res) => {
         console.log(res?.data);
         setRecommendations(res?.data);
       });
@@ -31,7 +30,7 @@ const MyRecommendation = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        axios.delete(`${import.meta.env.VITE_URL}/myRecommendation/${id}`)
+        axiosInstance.delete(`/myRecommendation/${id}`)
         .then(res =>{
             console.log(res)
             setRecommendations( prev => prev.filter(rec => rec._id !== id))

@@ -60,7 +60,7 @@ const TopContriButors = () => {
                   <td >{index + 1}</td>
                   <td className="flex  items-center gap-5 text- xl"><FaUserCircle size={20} className="text-blue-500" />{allQuery.email}</td>
                   <td> {allQuery.count}</td>
-      *
+      
                 
                 </tr>
               ))}

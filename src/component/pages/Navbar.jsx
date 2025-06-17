@@ -6,7 +6,12 @@ import { FiLogIn, FiLogOut } from "react-icons/fi";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthContext";
 
-const links = (
+
+
+const Navbar = () => {
+  const { user, userLogOut } = use(AuthContext);
+
+  const links = (
   <>
     <li className="ded">
       <NavLink to='/'>Home</NavLink>
@@ -16,7 +21,9 @@ const links = (
     </li>
 
    
-    <li className="ded">
+    {
+      user && <>
+       <li className="ded">
       <NavLink to='/myQueries'>My Queries</NavLink>
     </li>
     <li className="ded">
@@ -25,11 +32,11 @@ const links = (
      <li className="ded">
       <NavLink to='/recommendations'>Recommendations For Me</NavLink>
     </li>
+      </>
+    }
   </>
 );
 
-const Navbar = () => {
-  const { user, userLogOut } = use(AuthContext);
 
   const handleLogout = () => {
     userLogOut()

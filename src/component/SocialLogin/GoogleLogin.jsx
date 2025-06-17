@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 
 
@@ -7,11 +8,11 @@ const GoogleLogin = () => {
 
 
     const {googlLogin} = use(AuthContext)
-    
+      const provider = new GoogleAuthProvider()
 
     const handleLogin = async() =>{
       try{
-        const result = await  googlLogin()
+        const result = await  googlLogin(provider)
         const user = result?.user
         console.log(user)
       }

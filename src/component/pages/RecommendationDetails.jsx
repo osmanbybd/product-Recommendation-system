@@ -1,24 +1,26 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+import React, { use, useEffect, useState } from 'react';
 import RecommendationCard from './RecommendationCard';
 import { FaArrowUp } from "react-icons/fa";
+import axiosInstance from '../hooks/useAsxioxSecure';
+import { AuthContext } from '../context/AuthContext';
 const RecommendationDetails = ({queryId, refresh}) => {
     console.log(queryId)
     const [AllRecommendation , setAllRecommendation] = useState([])
     const [showAllRecommendation, setShowAllRecommendation] = useState(false)
-
+        const {user} = use(AuthContext)
 
     useEffect(() => {
 
 
-        axios(`${import.meta.env.VITE_URL}/recommendation?queryId=${queryId}`)
+        axiosInstance(`/recommendation?queryId=${queryId}&email=${user?.email}`)
         .then(res =>{
             console.log(res?.data)
             setAllRecommendation(res?.data)
         })
 
 
-    },[queryId,refresh])
+    },[queryId,refresh,user])
 
 
 
@@ -26,11 +28,11 @@ const RecommendationDetails = ({queryId, refresh}) => {
 
     return (
         <div>
-            <div className='bg-gradient-to-r from-[#6bbd60] to-[#d1f7c4] flex justify-between items-center rounded-lg shadow-lg p-5 '>
+            <div className='glass-section  flex justify-between items-center rounded-lg shadow-lg p-5 '>
                 <h1 className='text-2xl font-semibold text-blue-600'>Recommendation : {AllRecommendation?.length || 0} </h1>
                 <button 
                 onClick={() => setShowAllRecommendation(!showAllRecommendation)}
-                className='btn btn-success'>{showAllRecommendation ? 'Hide Recommendation': 'All Recommendation  '  }</button>
+                className='btn glass-section'>{showAllRecommendation ? 'Hide Recommendation': 'All Recommendation  '  }</button>
             </div>
 
             {
