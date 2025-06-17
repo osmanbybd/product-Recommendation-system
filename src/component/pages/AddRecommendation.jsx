@@ -55,7 +55,7 @@ const AddRecommendation = ({ detailsQueries , handleRefresh }) => {
     axios
       .post(`${import.meta.env.VITE_URL}/recommendation`, recommendation)
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data?.data?.insertedId) {
           Swal.fire({
             title: "Drag me!",
