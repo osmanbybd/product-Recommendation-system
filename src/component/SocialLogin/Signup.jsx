@@ -20,13 +20,13 @@ const Signup = () => {
     const email = from.email.value;
     const password = from.password.value;
 
-    console.log(email, password);
+    // console.log(email, password);
 
     // jodi database save kora lage tahole ami kobo smssa nai ok
 
     loginUser(email, password)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         navigate(location.state || '/')
         Swal.fire({
           position: "top-end",
@@ -37,7 +37,7 @@ const Signup = () => {
         });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
