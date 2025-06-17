@@ -3,7 +3,7 @@ import { FaBars, FaTable, FaTh, FaThLarge } from "react-icons/fa";
 import { motion } from "motion/react";
 import { Fade } from "react-awesome-reveal";
 import AllQueryCard from "./AllQueryCard";
-import TbaleCard from "./TbaleCard";
+
 import { Link, NavLink } from "react-router";
 import axios from "axios";
 import "aos/dist/aos.css";

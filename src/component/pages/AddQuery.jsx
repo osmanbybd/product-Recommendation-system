@@ -55,7 +55,7 @@ const AddQuery = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="bg-[#91f185] w-full text-center py-5 lg:text-6xl md:text-3xl text-xl">
+      <div className="glass-section  w-full text-center py-5 lg:text-6xl md:text-3xl text-xl">
         <h1>Add New Product Query</h1>
       </div>
 
