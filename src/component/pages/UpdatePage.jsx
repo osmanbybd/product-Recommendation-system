@@ -7,7 +7,7 @@ const UpdatePage = () => {
   const updateData = useLoaderData();
   const updateQueries= updateData.data;
 
-  console.log(updateQueries);
+  // console.log(updateQueries);
   const { productName, ProductBrand, ProductPhoto, productTitle, reason, _id } =updateQueries;
     const navigate = useNavigate()
 
@@ -24,7 +24,7 @@ const UpdatePage = () => {
     axios
       .put(`${import.meta.env.VITE_URL}/updateQueries/${_id}`, updateForm)
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data?.data?.matchedCount > 0) {
           Swal.fire({
             title: "Drag me!",
