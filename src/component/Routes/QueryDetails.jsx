@@ -45,13 +45,13 @@ const QueryDetails = () => {
         email: user?.email,
       })
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         const isLike = data?.data?.limit;
         setLiked(isLike);
         setLikeCount((prev) => (isLike ? prev + 1 : prev - 1));
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
