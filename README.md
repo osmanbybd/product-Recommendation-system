@@ -69,3 +69,6 @@ This project was built as part of an assignment to demonstrate skills in:
 
 ## 📁 Folder Structure
 
+
+## 🚀 Live Server (Hosted on Render)
+> 🔗 https://product-recommendation-server-roan.vercel.app/
