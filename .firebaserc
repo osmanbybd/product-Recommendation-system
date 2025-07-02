@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "product-manegment"
-  }
+    "default": "auth-itegration-1a783"
+  },
+  "targets": {},
+  "etags": {}
 }
