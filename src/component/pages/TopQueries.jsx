@@ -30,8 +30,8 @@ const TopQueries = () => {
     <div className="container mx-auto my-4 p-5">
       <div>
         <Zoom triggerOnce>
-          <h1 className="text-center lg:text-6xl md:text-3xl text-xl font-semibold flex  items-center justify-center">
-            <FaFireAlt /> Trending <span className="text-blue-600">Brands</span>
+          <h1 className="text-center lg:text-6xl md:text-3xl text-3xl font-bold flex  items-center justify-center">
+            <FaFireAlt /> Trending Brands
           </h1>
         </Zoom>
       </div>

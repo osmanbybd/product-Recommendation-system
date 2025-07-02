@@ -10,6 +10,9 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  background-color:  #FEEBF6;
+  
+  /* background-color:  #0F172A; */
 }
 
 .ded{
@@ -18,33 +21,34 @@ body {
 }
 
 a.active {
-  color: mediumpurple;
-  text-decoration: underline
+  color: blue;
+  text-decoration: underline;
+  font-size: 
 }
 
+/* ✅ Main Card with Gradient Tint */
 .glass-card {
-  @apply bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-lg rounded-xl p-5;
+  @apply bg-gradient-to-br from-[#687FE5]/30 to-[#a0b4ff]/20 backdrop-blur-md border border-white/20 text-black shadow-lg rounded-xl p-5;
 }
 
+/* ✅ Section Background (lighter glass look) */
 .glass-section {
-  @apply bg-black/40 backdrop-blur-sm text-white p-6 rounded-2xl border border-gray-600;
+  @apply bg-gradient-to-br from-[#687FE5]/20 to-white/10 backdrop-blur-md text-black p-6 rounded-2xl border border-[#8fa3e6]/30;
 }
 
+/* ✅ Button with hover effect */
 .glass-btn {
-  @apply bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-lg px-4 py-2 rounded-md transition duration-300;
+  @apply bg-[#687FE5]/30 hover:bg-[#687FE5]/50 text-black border border-white/20 backdrop-blur-lg px-4 py-2 rounded-md transition duration-300;
 }
 
-/* .glass-banner {
-  @apply bg-white/10 backdrop-blur-lg border border-white/20 text-white rounded-2xl shadow-xl p-6;
-}
-
-.glass-table {
-  @apply bg-white/10 backdrop-blur-sm border border-white/20 shadow-md rounded-lg p-4;
-} */
-
+/* ✅ Hero / Banner Section */
 .glass-banner {
-  @apply bg-blue-500/10 backdrop-blur-lg border border-blue-100/20 text-white rounded-2xl shadow-xl p-6;
+  @apply bg-gradient-to-r from-[#687FE5]/40 to-[#8aa6ff]/30 backdrop-blur-xl border border-[#a3b7ff]/40 text-black  shadow-xl p-6;
 }
+
+/* ✅ Table */
 .glass-table {
-  @apply bg-green-100/10 backdrop-blur-sm border border-green-100/20 text-white shadow-md rounded-lg p-4;
+  @apply bg-gradient-to-br from-[#687FE5]/20 to-white/5 backdrop-blur-md border border-[#a0b4ff]/30 text-black shadow-md rounded-lg p-4;
 }
+
+

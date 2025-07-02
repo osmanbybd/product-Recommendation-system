@@ -14,6 +14,11 @@ import UpdatePage from "../pages/UpdatePage";
 import AllQueries from "../pages/AllQueries";
 import MyRecommendation from "../pages/MyRecommendation";
 import Loading from "../pages/Loading";
+import { Component } from "react";
+import Dashboard from "../pages/Dashboard/DashboardHome";
+import DashboardLayout from "../pages/Dashboard/dashboardLayout/DashboardLayout";
+import DashboardHome from "../pages/Dashboard/DashboardHome";
+import About from "../pages/About";
 
 
 
@@ -27,7 +32,69 @@ export const router = createBrowserRouter([
                 Component:Home,
                 hydrateFallbackElement: Loading
             },
+            // {
+            //     path: 'recommendations',
+            //     element: <PrivateRoute><RecommendationsForMe></RecommendationsForMe> </PrivateRoute>
+            // },
+            // {
+            //     path :'myQueries',
+            //     element: <PrivateRoute> <MyQueries></MyQueries></PrivateRoute>
+            // },
+            // {
+            //     path: 'myRecommendation',
+            //    element: <PrivateRoute><MyRecommendation></MyRecommendation> </PrivateRoute>
+            // },
             {
+                path:'login',
+                Component: Signup
+            },
+            {
+                path: 'register',
+                Component: Register
+            },
+            // {
+            //     path: 'addQuery',
+            //     Component: AddQuery
+            // },
+            {
+                path: 'queries/:id',
+                loader: ({params}) => axios(`${import.meta.env.VITE_URL}/queries/${params.id}`),
+                element : <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>
+            },
+            {
+                path: 'updatePage/:id',
+                loader: ({params}) => axios(`${import.meta.env.VITE_URL}/queries/${params.id}`),
+                Component: UpdatePage
+            },
+              {
+                path: 'allQueries',
+                Component: AllQueries
+            },
+            {
+                path:'/about',
+                Component: About
+            }
+
+
+        ]
+    },
+    {
+        path:'*',
+        Component: NotPound
+    },
+    {
+    path:'dashboard',
+    Component:DashboardLayout,
+    children:[
+        {
+            index:true,
+            Component:DashboardHome
+        },
+         {
+                path: 'addQuery',
+                Component: AddQuery
+            },
+                {
                 path: 'recommendations',
                 element: <PrivateRoute><RecommendationsForMe></RecommendationsForMe> </PrivateRoute>
             },
@@ -39,38 +106,10 @@ export const router = createBrowserRouter([
                 path: 'myRecommendation',
                element: <PrivateRoute><MyRecommendation></MyRecommendation> </PrivateRoute>
             },
-            {
-                path:'login',
-                Component: Signup
-            },
-            {
-                path: 'register',
-                Component: Register
-            },
-            {
-                path: 'addQuery',
-                Component: AddQuery
-            },
-            {
-                path: 'queries/:id',
-                loader: ({params}) => axios(`${import.meta.env.VITE_URL}/queries/${params.id}`),
-                element : <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>
-            },
-            {
-                path: 'updatePage/:id',
-                loader: ({params}) => axios(`${import.meta.env.VITE_URL}/queries/${params.id}`),
-                Component: UpdatePage
-            },
-            {
+              {
                 path: 'allQueries',
                 Component: AllQueries
             },
-            
-
-        ]
-    },
-    {
-        path:'*',
-        Component: NotPound
+    ]
     }
 ])

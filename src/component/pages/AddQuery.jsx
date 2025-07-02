@@ -6,13 +6,12 @@ import Swal from "sweetalert2";
 const AddQuery = () => {
   const { user } = use(AuthContext);
 
-  // console.log(user?.photoURL);
-
   const handleAddQuery = (e) => {
     e.preventDefault();
     const from = e.target;
     const formData = new FormData(from);
     const rowData = Object.fromEntries(formData.entries());
+
     if (
       !rowData.productName ||
       !rowData.ProductBrand ||
@@ -23,12 +22,10 @@ const AddQuery = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Please All the require field!",
+        text: "Please fill in all the required fields!",
       });
       return;
     }
-
-    // console.log(rowData);
 
     const NewRowData = {
       ...rowData,
@@ -40,76 +37,97 @@ const AddQuery = () => {
     axios
       .post(`${import.meta.env.VITE_URL}/add-query`, NewRowData)
       .then((res) => {
-        if (res?.insertedId) {
+        if (res?.data?.insertedId) {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Add your query success ",
+            title: "Your query has been added!",
             showConfirmButton: false,
             timer: 1500,
           });
         }
-        // console.log(res);
       });
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="glass-section  w-full text-center py-5 lg:text-6xl md:text-3xl text-xl">
-        <h1>Add New Product Query</h1>
-      </div>
+    <div className="flex flex-col justify-center items-center px-4 py-10">
+      <h1 className="text-center text-3xl lg:text-5xl font-bold mb-10 text-[#687FE5]">
+        Add New Product Query
+      </h1>
 
-      <div>
-        <form
-          onSubmit={handleAddQuery}
-          className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4"
-        >
-          <legend className="fieldset-legend">Page details</legend>
-
-          <label className="label">Name</label>
+      <form
+        onSubmit={handleAddQuery}
+        className="w-full max-w-2xl bg-gradient-to-br from-[#687FE5]/30 to-white/10 backdrop-blur-md border border-white/20 text-white shadow-lg rounded-xl p-6 space-y-4"
+      >
+        <div>
+          <label className="block font-medium mb-1 text-black">
+            Product Name
+          </label>
           <input
             type="text"
             name="productName"
-            className="input"
-            placeholder="Product Name"
+            className="w-full p-3 rounded-md bg-white/20 text-black placeholder-black border border-[#a0b4ff]/30 focus:outline-none"
+            placeholder="Enter product name"
           />
-          <label className="label">Product Brand</label>
+        </div>
+
+        <div>
+          <label className="block font-medium mb-1 text-black">
+            Product Brand
+          </label>
           <input
             type="text"
             name="ProductBrand"
-            className="input"
-            placeholder="product Brand"
+            className="w-full p-3 rounded-md bg-white/20 text-black placeholder-black border border-[#a0b4ff]/30 focus:outline-none"
+            placeholder="Enter product brand"
           />
+        </div>
 
-          <label className="label">Photo</label>
+        <div>
+          <label className="block font-medium mb-1 text-black">
+            Product Photo URL
+          </label>
           <input
             type="text"
             name="ProductPhoto"
-            className="input"
-            placeholder="Product Photo"
+            className="w-full p-3 rounded-md bg-white/20 text-black placeholder-black border border-[#a0b4ff]/30 focus:outline-none"
+            placeholder="Enter image URL"
           />
+        </div>
 
-          <label className="label">Title </label>
+        <div>
+          <label className="block font-medium mb-1 text-black">
+            Product Title
+          </label>
           <input
             type="text"
             name="productTitle"
-            className="input"
-            placeholder="product Title"
+            className="w-full p-3 rounded-md bg-white/20 text-black placeholder-black border border-[#a0b4ff]/30 focus:outline-none"
+            placeholder="Short product title"
           />
-          <label htmlFor="Reason">
-            <span className="text-sm font-medium text-gray-700"> Reason </span>
+        </div>
 
-            <textarea
-              name="reason"
-              className="mt-0.5 w-full resize-none rounded border-gray-300 bg-white shadow-sm sm:text-sm"
-              rows="4"
-            ></textarea>
+        <div>
+          <label className="block font-medium mb-1 text-black">
+            Reason for Query
           </label>
-          <button className="btn" type="submit">
-            Add Query
+          <textarea
+            name="reason"
+            rows="4"
+            className="w-full p-3 rounded-md bg-white/20 text-black placeholder-black border border-[#a0b4ff]/30 focus:outline-none"
+            placeholder="Why are you looking for this product?"
+          ></textarea>
+        </div>
+
+        <div className="text-center">
+          <button
+            type="submit"
+            className="bg-[#687FE5]/80 hover:bg-[#687FE5] text-black px-6 py-2 rounded-md transition duration-300"
+          >
+            Submit Query
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };

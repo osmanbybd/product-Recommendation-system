@@ -1,95 +1,83 @@
 import React, { use, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../context/AuthContext";
-// import axios from "axios";
 import { Typewriter } from "react-simple-typewriter";
 import { Fade } from "react-awesome-reveal";
 import QueryCard from "./QueryCard";
-import 'aos/dist/aos.css';
-import Aos from "aos";
 import MyqQueryCard from "./MyqQueryCard";
 import axiosInstance from "../hooks/useAsxioxSecure";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 const MyQueries = () => {
   const { user } = use(AuthContext);
   const [myQueries, setMyQueries] = useState([]);
 
-  // console.log(myQueries)
   useEffect(() => {
     if (user?.email) {
-      axiosInstance(`/my-queries/${user.email}`).then(
-        (data) => {
-          // console.log(data.data);
-          const myAllQueries = data?.data
-          setMyQueries(myAllQueries)
-        }
-      );
+      axiosInstance(`/my-queries/${user.email}`).then((res) => {
+        setMyQueries(res?.data || []);
+      });
     }
   }, [user]);
 
+  useEffect(() => {
+    Aos.init({ duration: 1200, once: true });
+  }, []);
 
-  
-  useEffect(() =>{
-    Aos.init({
-      duration: 2000,
-      delay: 5000,
-      once: true
-    })
-  },[])
   return (
-    <div className="">
-      <div className="flex flex-col justify-center items-center py-25 space-y-5 glass-banner  m-5">
-        <div>
-          {/* <h1>Want to Add a New Product Query?</h1> */}
-          <span className="text-5xl text-blue-600 font-bold">
-            <Typewriter
-              words={["Want to Add a New Product Query?"]}
-              loop={0}
-              cursor
-              cursorStyle="_"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={2000}
-            ></Typewriter>
-          </span>
-          <Fade cascade delay={200} duration={1000} fraction={0.5} triggerOnce>
-            <p className="lg:text-xl text-center ">
-              Submit your query and let others recommend the best product for
-              you.
-            </p>
-          </Fade>
-        </div>
-        <Link to="/addQuery" className="btn btn-primary">
-          Add Queries
+    <div className="px-4 py-8 space-y-10">
+      {/* 🔷 Header Section */}
+      <div
+        className="glass-banner text-center py-10 px-6 max-w-5xl mx-auto"
+        data-aos="fade-down"
+      >
+        <h1 className="text-3xl lg:text-5xl font-bold text-[#687FE5] mb-4">
+          <Typewriter
+            words={["Want to Add a New Product Query?"]}
+            loop={0}
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={2000}
+          />
+        </h1>
+
+        <Fade cascade delay={300} duration={1000} triggerOnce>
+          <p className="lg:text-lg text-white mb-6">
+            Submit your query and let others recommend the best product for you.
+          </p>
+        </Fade>
+
+        <Link to="/dashboard/addQuery" className="glass-btn inline-block">
+          Add New Query
         </Link>
       </div>
 
+      {/* 📁 My Queries Section */}
+      <div className="space-y-5">
+        <Fade cascade delay={200} duration={1000} triggerOnce>
+          <h2 className="text-center text-3xl lg:text-5xl font-bold text-[#687FE5]">
+            📁 My Product Queries
+          </h2>
+        </Fade>
 
-
-        <div className="my-5">
-            
-               <Fade
-                  cascade
-                  delay={200} 
-                  duration={1000} 
-                  fraction={0.5} 
-                  triggerOnce
-                >
-                <h1 className="text-center lg:text-6xl md:text-3xl text-xl font-bold">📁 My Product Queries</h1>
-                </Fade>
-
-
-
-            <div className="container mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 my-5 p-3 "  data-aos="fade-up">
-                    {
-                        myQueries.map(query => <MyqQueryCard key={query._id} query={query}></MyqQueryCard>)
-                    }
-            </div>
-
-
-        </div>
-
-
-
+        {myQueries.length > 0 ? (
+          <div
+            className="container mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6"
+            data-aos="fade-up"
+          >
+            {myQueries.map((query) => (
+              <MyqQueryCard key={query._id} query={query} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center text-white py-10 glass-section max-w-xl mx-auto">
+            <p className="text-lg">No queries found yet. Start by adding one!</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

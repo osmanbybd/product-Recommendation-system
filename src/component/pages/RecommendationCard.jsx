@@ -7,7 +7,7 @@ const RecommendationCard = ({ recommendation }) => {
 
 
   return (
- <div className="card card-side bg-base-100 shadow-sm">
+ <div className="card card-side glass-table shadow-sm">
       <figure>
         <img
         className="w-40 object-cover"

@@ -32,7 +32,7 @@ const TopContriButors = () => {
 
     <div className="my-10">
         <Slide triggerOnce direction="left">
-            <h1 className="text-center lg:text-6xl md:text-3xl text-xl font-semibold flex justify-center items-center"><FaCrown className="text-blue-600" /> Top Contributors</h1>
+            <h1 className="text-center lg:text-6xl md:text-3xl text-3xl font-bold flex justify-center items-center"><FaCrown className="" /> Top Contributors</h1>
         </Slide>
     </div>
 

@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
-
+import { AuthContext } from '../context/AuthContext';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 const Footer = () => {
+  const {user} = use(AuthContext)
     return (
-       <footer className="bg-white dark:bg-gray-900">
+       <footer className="bg-[#687FE5] ">
   <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div>
-        <div className="text-teal-600 dark:text-teal-300">
+        <div className="text-indigo-900 ">
            <Link to='/' className=" text-3xl font-bold">📦 ProductReco</Link>
         </div>
 
-        <p className="mt-4 max-w-xs text-gray-500 dark:text-gray-400">
-     ProductReco is a community-driven product recommendation platform where users can ask queries about any product and receive real-time suggestions from other users based on their personal experiences. From tech gadgets to household items, ProductReco helps you make smarter purchase decisions by crowd-sourcing honest recommendations and reviews.
+        <p className="mt-4 max-w-xs text-black ">
+     ProductReco is a community-driven product recommendation platform where users can ask queries about any product and receive real-time suggestions from other users based on their personal experiences. 
         </p>
 
         <ul className="mt-8 flex gap-6">
@@ -79,66 +81,10 @@ const Footer = () => {
         </ul>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
-        <div>
-          <p className="font-medium text-gray-900 dark:text-white">Services</p>
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-3">
+      
 
-          <ul className="mt-6 space-y-4 text-sm">
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                1on1 Coaching
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Company Review
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Accounts Review
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                HR Consulting
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                SEO Optimisation
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <p className="font-medium text-gray-900 dark:text-white">Company</p>
-
-          <ul className="mt-6 space-y-4 text-sm">
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                About
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Meet the Team
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Accounts Review
-              </a>
-            </li>
-          </ul>
-        </div>
+      
 
         <div>
           <p className="font-medium text-gray-900 dark:text-white">Helpful Links</p>
@@ -151,48 +97,35 @@ const Footer = () => {
             <li>
            <NavLink to='/allQueries'>All Queries</NavLink>
             </li>
+            {
+              user && <li>
+           <NavLink to='/dashboard'>Dashboard</NavLink>
+            </li>
+            }
 
-            <li>
-              <NavLink to='/myQueries'>My Queries</NavLink>
-            </li>
-            <li>
-              <NavLink to='/myRecommendation'>My Recommendations</NavLink>
-            </li>
-            <li>
-               <NavLink to='/recommendations'>Recommendations For Me</NavLink>
-            </li>
+
           </ul>
         </div>
+            
+      <div>
+                  <div className='space-y-4'>
+            <h1>contact</h1>
 
+          <h3 className="font-semibold mb-2">📍 Location</h3>
+          <p className="flex items-center gap-2"><FaMapMarkerAlt /> Dhaka, Bangladesh</p>
+        </div>
         <div>
-          <p className="font-medium text-gray-900 dark:text-white">Legal</p>
-
-          <ul className="mt-6 space-y-4 text-sm">
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Accessibility
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Returns Policy
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Refund Policy
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Hiring-3 Statistics
-              </a>
-            </li>
-          </ul>
+          <h3 className="font-semibold mb-2">📞 Phone</h3>
+          <p className="flex items-center gap-2"><FaPhone /> +880 1614178068</p>
         </div>
+        <div>
+          <h3 className="font-semibold mb-2">✉️ Email</h3>
+          <p className="flex items-center gap-2"><FaEnvelope /> mreosmangoni@gmail.com</p>
+        </div>
+      </div>
+
+
+
       </div>
     </div>
 

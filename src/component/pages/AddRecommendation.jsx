@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const AddRecommendation = ({ detailsQueries , handleRefresh }) => {
+const AddRecommendation = ({ detailsQueries, handleRefresh }) => {
   const { user } = use(AuthContext);
   const {
     productName,
@@ -31,7 +31,7 @@ const AddRecommendation = ({ detailsQueries , handleRefresh }) => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Please All the require field!",
+        text: "Please fill all required fields!",
       });
       return;
     }
@@ -48,73 +48,86 @@ const AddRecommendation = ({ detailsQueries , handleRefresh }) => {
       queryTitle: productTitle,
       userEmail,
       userName,
-      timestamp: new Date().toISOString(),
       userPhoto,
+      timestamp: new Date().toISOString(),
     };
 
     axios
       .post(`${import.meta.env.VITE_URL}/recommendation`, recommendation)
-      .then((data) => {
-        // console.log(data);
-        if (data?.data?.insertedId) {
+      .then((res) => {
+        if (res?.data?.insertedId) {
           Swal.fire({
-            title: "Drag me!",
+            title: "Recommendation Added!",
             icon: "success",
-            draggable: true,
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1500,
           });
-          form.reset()
-          if(handleRefresh) {
-            handleRefresh()
+          form.reset();
+          if (handleRefresh) {
+            handleRefresh();
           }
         }
       });
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="glass-section rounded-lg shadow-lg p-5 ">
-        <h1 className="text-xl font-semibold">Add Your Complement Please</h1>
+    <div className="flex flex-col justify-center items-center px-4 ">
+      <div className="glass-section text-center mb-6 w-full max-w-2xl">
+        <h1 className="text-2xl font-bold ">
+          Add Your Recommendation ✍️
+        </h1>
+        <p className="text-sm  mt-1">
+          Suggest a better product with reason
+        </p>
       </div>
 
-      <div className="py-4">
+      <div className="w-full max-w-2xl glass-card my-5">
         <form
           onSubmit={handleAddRecommendation}
-          className="fieldset  border-base-300 shadow-lg rounded-box w-xs border p-4"
+          className="grid grid-cols-1 gap-4 "
         >
-          <legend className="label">Product Brand</legend>
+          <div>
+            <label className="label text-black">Product Brand</label>
+            <input
+              type="text"
+              name="recommendationBrand"
+              className="input input-bordered w-full"
+              placeholder="e.g. Samsung"
+            />
+          </div>
 
-          <input
-            type="text"
-            name="recommendationBrand"
-            className="input"
-            placeholder="product Brand"
-          />
+          <div>
+            <label className="label text-black">Photo URL</label>
+            <input
+              type="text"
+              name="recommendationPhoto"
+              className="input input-bordered w-full"
+              placeholder="https://image-link"
+            />
+          </div>
 
-          <label className="label">Photo</label>
-          <input
-            type="text"
-            name="recommendationPhoto"
-            className="input"
-            placeholder="Product Photo"
-          />
+          <div>
+            <label className="label text-black">Title</label>
+            <input
+              type="text"
+              name="recommendationTitle"
+              className="input input-bordered w-full"
+              placeholder="Product Title"
+            />
+          </div>
 
-          <label className="label">Title </label>
-          <input
-            type="text"
-            name="recommendationTitle"
-            className="input"
-            placeholder="product Title"
-          />
-          <label htmlFor="Reason">
-            <span className="text-sm font-medium text-gray-700"> Reason </span>
-
+          <div>
+            <label className="label text-black">Reason</label>
             <textarea
               name="recommendationReason"
-              className="mt-0.5 w-full resize-none rounded border-gray-300 bg-white shadow-sm sm:text-sm"
-              rows="4"
+              className="textarea textarea-bordered w-full h-28 resize-none"
+              placeholder="Why do you recommend this product?"
             ></textarea>
-          </label>
-          <button className="btn btn-primary" type="submit">
+          </div>
+
+          <button type="submit" className="glass-btn w-full">
             Add Recommendation
           </button>
         </form>
