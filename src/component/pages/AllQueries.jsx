@@ -12,6 +12,7 @@ const AllQueries = () => {
   const [allQueries, setAllQueries] = useState([]);
   const [layout, setLayout] = useState("grid-3");
   const [searchText, setSearchText] = useState("");
+    
   useEffect(() => {
     axios(`${import.meta.env.VITE_URL}/queries?limit=0`).then((data) => {
       // console.log(data?.data);

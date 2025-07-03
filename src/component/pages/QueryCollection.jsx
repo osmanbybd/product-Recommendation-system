@@ -1,13 +1,14 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import QueryCard from "./QueryCard";
 import Aos from "aos";
+import axiosInstance from "../hooks/useAsxioxSecure";
 const QueryCollection = () => {
   const [queries, setQueries] = useState([]);
 
   useEffect(() => {
-    axios(`${import.meta.env.VITE_URL}/queries?limit=6`).then((data) => {
+    axiosInstance(`/queries?limit=6`).then((data) => {
       // console.log(data.data)
       setQueries(data.data);
     });
