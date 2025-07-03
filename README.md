@@ -8,7 +8,7 @@ A full-stack web application where users can add product-related queries and rec
 
 ## 🌐 Live Website
 
-👉 [Live Demo](https://auth-itegration-1a783.web.app)
+👉 [Live Demo](https://product-manegment.web.app)
 
 ---
 
